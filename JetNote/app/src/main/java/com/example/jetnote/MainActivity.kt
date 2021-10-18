@@ -4,8 +4,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
+import com.example.jetnote.theme.JetNotesTheme
+import com.example.jetnote.ui.screens.NotesScreen
 import com.example.jetnote.viewmodel.MainViewModel
 import com.example.jetnote.viewmodel.MainViewModelFactory
+
 
 /**
  * Main activity for the app.
@@ -23,7 +26,26 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
 
     setContent {
-
+      JetNotesTheme {
+        NotesScreen(viewModel = viewModel)
+//        val coroutineScope = rememberCoroutineScope()
+//        val scaffoldState: ScaffoldState = rememberScaffoldState()
+//
+//        Scaffold(scaffoldState = scaffoldState,
+//        drawerContent = {
+//          AppDrawer(currentScreen = Screen.Notes,
+//            closeDrawerAction = {
+//              coroutineScope.launch {
+//                scaffoldState.drawerState.close()
+//              }
+//            }
+//          )
+//        },
+//          content = {
+//            Note()
+//        }
+//        )
+      }
     }
   }
 }

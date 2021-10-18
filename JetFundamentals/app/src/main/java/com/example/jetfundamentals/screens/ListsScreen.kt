@@ -3,12 +3,19 @@ package com.example.jetfundamentals.screens
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.jetfundamentals.R
 import com.example.jetfundamentals.router.BackButtonHandler
 import com.example.jetfundamentals.router.JetFundamentalsRouter
@@ -58,12 +65,30 @@ fun ListScreen() {
 
 @Composable
 fun MyList() {
-  //TODO write your code here
+
+  LazyColumn{
+    items(items) {item -> ListItem(item) }
+  }
 }
 
 @Composable
 fun ListItem(bookCategory: BookCategory, modifier: Modifier = Modifier) {
-  //TODO write your code here
+  Column(modifier = Modifier.padding(8.dp)) {
+    Text(
+      text = stringResource(bookCategory.categoryResourceId),
+      fontSize = 22.sp,
+      fontWeight = FontWeight.Bold,
+      color = colorResource(id = R.color.colorPrimary)
+    )
+
+    Spacer(modifier = modifier.height(8.dp))
+
+    LazyRow{
+      items(bookCategory.bookImageResources){ items ->
+        BookImage(items)
+      }
+    }
+  }
 }
 
 @Composable
