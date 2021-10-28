@@ -12,6 +12,8 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetnote.domain.model.NoteModel
+import com.example.jetnote.routing.Screen
+import com.example.jetnote.ui.components.AppDrawer
 import com.example.jetnote.ui.components.TopAppBar
 import com.example.jetnote.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
@@ -38,11 +40,22 @@ fun NotesScreen(viewModel: MainViewModel){
             )
         },
         scaffoldState = scaffoldState, //here - Scaffold state
-        drawerContent = {//here - drawer UI
+        drawerContent = {
+            AppDrawer(currentScreen = Screen.Notes) {
+                var closeDrawerAction = {
+                    coroutineScope.launch { scaffoldState.drawerState.close() }
+                }
+            }
+            },
+        content = {
+            if (notes.isNotEmpty()){
+                NotesList(
+                    notes = notes,
+                    onNoteCheckedChange = {viewModel.onNoteCheckedChang(it)},
+                    onNoteClick = {viewModel.onNoteClick(it)})
+            }
         }
-    ) {
-
-    }
+        )
 }
 
 @Composable

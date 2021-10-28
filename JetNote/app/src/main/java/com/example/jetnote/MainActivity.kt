@@ -28,23 +28,6 @@ class MainActivity : AppCompatActivity() {
     setContent {
       JetNotesTheme {
         NotesScreen(viewModel = viewModel)
-//        val coroutineScope = rememberCoroutineScope()
-//        val scaffoldState: ScaffoldState = rememberScaffoldState()
-//
-//        Scaffold(scaffoldState = scaffoldState,
-//        drawerContent = {
-//          AppDrawer(currentScreen = Screen.Notes,
-//            closeDrawerAction = {
-//              coroutineScope.launch {
-//                scaffoldState.drawerState.close()
-//              }
-//            }
-//          )
-//        },
-//          content = {
-//            Note()
-//        }
-//        )
       }
     }
   }
