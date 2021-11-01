@@ -16,3 +16,5 @@ https://www.youtube.com/watch?v=ZLge7q02Pi4
 https://developer.android.com/studio/run/win-usb
 
 Flutter: https://flutter.dev/docs/get-started/install
+
+Tạo app đơn giản bằng Kotlin: https://www.youtube.com/watch?v=BBWyXo-3JGQ
